@@ -11,7 +11,8 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 import { path } from '../utils'
 
 import Home from '../routes/Home';
-import Login from '../routes/Login';
+// import Login from '../routes/Login';
+import Login from './Auth/Login';
 import Header from './Header/Header';
 import System from '../routes/System';
 
@@ -41,7 +42,8 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Router history={history}>
+                {/* history: cache data phia FE */}
+                <Router history={history}>   
                     <div className="main-container">
                         <ConfirmModal />
                         {this.props.isLoggedIn && <Header />}
