@@ -38,12 +38,12 @@ class Login extends Component {
         try{
             let data= await handleLoginApi(this.state.usename, this.state.password);
             console.log(data)
-            if(data && data.errCode !==0){
+            if(data && data.data.errCode !==0){
                 this.setState({
                     errMessage: data.data.message
                 })
             }
-            if(data && data.errCode ===0){
+            if(data && data.data.errCode ===0){
                 //todo
                 this.props.userLoginSuccess(data.user)
                 console.log('login success')
