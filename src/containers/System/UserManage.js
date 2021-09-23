@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import {getAllUsers, createNewUserService} from '../../services/userService' ;
+import {getAllUsers, createNewUserService, deleteUserService} from '../../services/userService' ;
 import ModalUSer from './ModalUSer';
+import {emitter} from "../../utils/emitter";
 class UserManage extends Component {
     constructor(props) {
         super(props);
@@ -51,10 +52,25 @@ class UserManage extends Component {
                 this.setState({
                     isOpenModalUser: false,
                 })
+                emitter.emit('EVENT_CLEAR_MODAL_DATA')
             }
         }catch(e){
             console.log(e)
         }
+    }
+
+    handleDeleteUser=async(user)=>{
+        try{
+            let res=await deleteUserService(user.id)
+            if(res && res.data.errCode ===0 ){
+                await this.getAllUsers();
+            }else{
+                alert(res.data.errMessage)
+            }
+        }catch(e){
+            console.log(e)
+        }
+        console.log('click delete', user)
     }
 
     render() {
@@ -101,7 +117,7 @@ class UserManage extends Component {
                                             <td>{item.address}</td>
                                             <td className="d-flex justify-content-center" style={{gap:'15px'}}>
                                                 <button type="button" className="btn btn-primary" style={{width: '25px'}}><i className="fas fa-pencil-alt"></i></button>
-                                                <button type="button" className="btn btn-danger" style={{width: '25px'}}><i className="far fa-trash-alt"></i></button>
+                                                <button onClick={() => this.handleDeleteUser(item)} type="button" className="btn btn-danger" style={{width: '25px'}}><i className="far fa-trash-alt"></i></button>
                                             </td>     
                                         </tr>
                                     )
