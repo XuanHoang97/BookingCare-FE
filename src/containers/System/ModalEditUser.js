@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {emitter} from "../../utils/emitter"
-class ModalUser extends Component {
+import {emitter} from "../../utils/emitter";
+import _ from 'lodash';
+
+class ModalEditUser extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            id: '',
             email: '',
             password: '',
             firstName: '',
@@ -16,22 +19,20 @@ class ModalUser extends Component {
             address: '',
         }
 
-        this.listenToEmitter();
-    }
-
-    listenToEmitter(){
-        emitter.on('EVENT_CLEAR_MODAL_DATA', ()=>{
-            this.setState({
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                address: '', 
-            })
-        })
     }
 
     componentDidMount() {
+        let user =this.props.currentUser;
+        if(user && !_.isEmpty(user)){
+            this.setState({  
+                id: user.id,  
+                email: user.email,
+                password: 'harcode',
+                firstName: user.firstName,
+                lastName:user.lastName,
+                address: user.address,
+            });
+        }
     }
 
     toggle =()=>{
@@ -60,15 +61,16 @@ class ModalUser extends Component {
         return isValid;
     }
 
-    handleAddNewUser=()=>{
+    handleSaveUser=()=>{
         let isValid=this.checkValidateInput();
         if(isValid===true){
-            //call api create modal
-            this.props.createNewUser(this.state);
+            //call api edit user modal
+            this.props.editUser(this.state);
         }
     }
 
     render() {
+        console.log('check props from parent', this.props)
         return (
             <Modal 
                 isOpen={this.props.isOpen} 
@@ -77,17 +79,18 @@ class ModalUser extends Component {
                 size="lg"
             >
                 
-                <ModalHeader toggle={()=>this.toggle()}>Create a new user</ModalHeader>
+                <ModalHeader toggle={()=>this.toggle()}>Edit a new user</ModalHeader>
                 <ModalBody>
                         <form>
                             <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Email</label>
-                                    <input onChange={(e)=>this.handleOnChangeInput(e, "email")} value={this.state.email} type="email" className="form-control" />
+                                    <input onChange={(e)=>this.handleOnChangeInput(e, "email")} value={this.state.email} disabled type="email" className="form-control" />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>Password</label>
-                                    <input onChange={(e)=>this.handleOnChangeInput(e, "password")} value={this.state.password} type="password" className="form-control" />
+                                    <input onChange={(e)=>this.handleOnChangeInput(e, "password")} value={this.state.password} disabled type="password" className="form-control" />
+                                    
                                 </div>
                             </div>
 
@@ -109,7 +112,7 @@ class ModalUser extends Component {
                         </form>
                 </ModalBody>
                 <ModalFooter>
-                <Button onClick={()=>this.handleAddNewUser()} color="primary" className="px-3">Add new</Button>{' '}
+                <Button onClick={()=>this.handleSaveUser()} color="primary" className="px-3">Save change</Button>{' '}
                 <Button color="secondary" className="px-3" onClick={()=>this.toggle()}>Cancel</Button>
                 </ModalFooter>
             </Modal>
@@ -129,4 +132,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalUser);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEditUser);
