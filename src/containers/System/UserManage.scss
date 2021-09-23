@@ -19,9 +19,22 @@
 }
 
 #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     text-align: left;
     background-color: #04AA6D;
     color: white;
+}
+
+.modal-user-container {
+    .modal-content {
+        .modal-header {
+            button {
+                border: none;
+                font-size: 30px;
+                background: transparent;
+                color: white;
+            }
+        }
+    }
 }
