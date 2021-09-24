@@ -38,6 +38,7 @@ class ModalUser extends Component {
         this.props.toggleFromParent();
     }
 
+    //onChange Fields
     handleOnChangeInput=(e, id)=>{
         //good code
         let copyState={...this.state}
@@ -47,6 +48,7 @@ class ModalUser extends Component {
         });
     }
 
+    //validate 
     checkValidateInput=()=>{
         let isValid=true;
         let arrInput=['email', 'password', 'firstName', 'lastName', 'address']
@@ -60,6 +62,7 @@ class ModalUser extends Component {
         return isValid;
     }
 
+    //tranmission data from parent to child
     handleAddNewUser=()=>{
         let isValid=this.checkValidateInput();
         if(isValid===true){

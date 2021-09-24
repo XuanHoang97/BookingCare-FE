@@ -37,7 +37,6 @@ class Login extends Component {
 
         try{
             let data= await handleLoginApi(this.state.usename, this.state.password);
-            console.log(data)
             if(data && data.data.errCode !==0){
                 this.setState({
                     errMessage: data.data.message

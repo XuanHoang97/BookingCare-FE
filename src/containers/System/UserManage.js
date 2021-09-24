@@ -68,6 +68,7 @@ class UserManage extends Component {
         }
     }
 
+    //delete user
     handleDeleteUser=async(user)=>{
         try{
             let res=await deleteUserService(user.id)
@@ -82,6 +83,7 @@ class UserManage extends Component {
         console.log('click delete', user)
     }
 
+    //edit user
     handleEditUser=(user)=>{
         console.log('test', user);
         this.setState({
@@ -103,9 +105,7 @@ class UserManage extends Component {
             }
         }catch(e){
             console.log(e)
-        }
-       
-        // console.log('click save user', res);
+        }       
     }
 
     render() {
