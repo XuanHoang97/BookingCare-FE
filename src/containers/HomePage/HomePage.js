@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HomeHeader from './HomeHeader'
+import HomeHeader from './HomeHeader';
+import Specialty from './Section/Specialty'
 
 class Home extends Component {
 
     render() {
         return (
             <div>
-                <HomeHeader/>
+                <HomeHeader />
+                <Specialty />
             </div>
         );
     }
