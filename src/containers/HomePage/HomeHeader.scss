@@ -19,7 +19,7 @@
                 background-position: 15px;
             }
             i {
-                font-size: 25px;
+                font-size: 20px;
                 color: grey;
                 cursor: pointer;
             }
@@ -49,15 +49,31 @@
             }
             .language-vi {
                 cursor: pointer;
+                opacity: 0.2;
                 &.active {
-                    color: orange;
+                    opacity: 1;
+                    span {
+                        color: orange;
+                        font-weight: bold;
+                    }
+                }
+                &:hover {
+                    opacity: 1;
                 }
             }
             .language-en {
                 margin: 0 10px;
                 cursor: pointer;
+                opacity: 0.2;
                 &.active {
-                    color: blue;
+                    opacity: 1;
+                    span {
+                        color: blue;
+                        font-weight: bold;
+                    }
+                }
+                &:hover {
+                    opacity: 1;
                 }
             }
         }
