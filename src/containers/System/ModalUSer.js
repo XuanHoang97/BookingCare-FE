@@ -164,7 +164,7 @@ class ModalUser extends Component {
 }
 
 const mapStateToProps = state => {
-    return { //code chay co loi ko, ko
+    return { //code chay co loi ko,
     };
 };
 

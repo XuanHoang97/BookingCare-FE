@@ -1,12 +1,12 @@
 import axios from 'axios';
 //login
 const handleLoginApi = (userEmail, userPassword) => {
-    return axios.post('http://localhost:8081/api/login', { email: userEmail, password: userPassword });
+    return axios.post('http://localhost:8083/api/login', { email: userEmail, password: userPassword });
 }
 
 //display all users
 const getAllUsers = (inputId) => {
-    return axios.get(`http://localhost:8082/api/get-all-users?id=${inputId}`)
+    return axios.get(`http://localhost:8083/api/get-all-users?id=${inputId}`)
 }
 
 // create new user
