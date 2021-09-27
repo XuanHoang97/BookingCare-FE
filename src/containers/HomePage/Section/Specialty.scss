@@ -1,34 +1,29 @@
-.section-specialty {
-    height: 330px;
-    border: 1px solid red;
-    background: white;
-    margin-bottom: 30px;
-    .specialty-content {
-        margin: 0 50px;
-    }
-    .img-customize {
-        height: 300px;
-        border: 1px solid green;
-    }
-}
-
 //reset slick slider css
 .slick-prev {
-    left: -10px !important;
+    left: -20px !important;
     z-index: 1000;
     height: 48px !important;
     width: 44px !important;
-    border: 1px solid rgb(255, 57, 57) !important;
-    background: rgb(255, 92, 92) !important;
+    border: 2px solid #d7d7d7 !important;
+    background: white !important;
+    &:hover {
+        background: #eceaea !important;
+    }
 }
 
-.slick-prev:before {
-    font-family: FontAwesome !important;
+.slick-prev:before,
+.slick-next:before {
+    font-family: 'Glyphicons Halflings' !important;
+    color: red !important;
 }
 
 .slick-next {
-    border: 1px solid red !important;
-    right: 0 !important;
+    border: 2px solid #d7d7d7 !important;
+    background: white !important;
+    right: -15px !important;
     height: 48px !important;
     width: 44px !important;
+    &:hover {
+        background: #eceaea !important;
+    }
 }
