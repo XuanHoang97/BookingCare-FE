@@ -8,11 +8,11 @@ class HomeHeader extends Component {
 
     changeLanguage=(language)=>{
         this.props.changeLanguageAppRedux(language);
-        //fire reduc event: actions
     }
 
     render() {
         let language=this.props.language;
+ 
         return (
             <React.Fragment>
                 <div className="home-header-container">
@@ -136,6 +136,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         language: state.app.language
     };
 };
