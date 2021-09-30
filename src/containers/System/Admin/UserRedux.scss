@@ -1,0 +1,10 @@
+.preview-img-container {
+    .preview-image {
+        height: 50px;
+        width: 100%;
+        border: 1px solid red;
+        background: center center no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
