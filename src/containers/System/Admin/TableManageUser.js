@@ -31,6 +31,11 @@ class TableManageUser extends Component {
         console.log('check delete:', user )
     }
 
+    //edit user
+    handleEditUser=(user) =>{
+        this.props.handleEditUserKey(user)
+    }
+
     render() {
         console.log('check all users: ', this.props.listUsers)
         console.log('check state: ', this.state.usersRedux)
@@ -59,7 +64,13 @@ class TableManageUser extends Component {
                                     <td>{item.lastName}</td>
                                     <td>{item.address}</td>
                                     <td className="d-flex" style={{gap:'15px'}}>
-                                        <button type="button" className="btn btn-primary d-flex justify-content-center align-items-center" style={{width: '25px'}}><i className="fas fa-pencil-alt"></i></button>
+                                        <button 
+                                            onClick={() => this.handleEditUser(item)}
+                                            type="button" className="btn btn-primary d-flex justify-content-center align-items-center" 
+                                            style={{width: '25px'}}>
+                                            <i className="fas fa-pencil-alt"></i>
+                                        </button>
+                                        
                                         <button 
                                             onClick={() => this.handleDeleteUser(item)}
                                             type="button" className="btn btn-danger d-flex justify-content-center align-items-center" 

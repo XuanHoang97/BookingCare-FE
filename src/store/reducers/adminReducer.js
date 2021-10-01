@@ -18,7 +18,7 @@ const adminReducer = (state = initialState, action) => {
                 ...copyState,
             }
 
-            //gender
+            //fetch gender
         case actionTypes.FETCH_GENDER_SUCCESS:
             state.genders = action.data;
             state.isLoadingGender = false;
@@ -35,7 +35,7 @@ const adminReducer = (state = initialState, action) => {
 
             }
 
-            //position 
+            //fetch position 
         case actionTypes.FETCH_POSITION_SUCCESS:
             state.positions = action.data;
             return {
@@ -50,7 +50,7 @@ const adminReducer = (state = initialState, action) => {
 
             }
 
-            //role
+            //fetch role
         case actionTypes.FETCH_ROLE_SUCCESS:
             state.roles = action.data;
             return {
@@ -64,6 +64,7 @@ const adminReducer = (state = initialState, action) => {
                 ...state,
             }
 
+            //fetch all user
         case actionTypes.FETCH_ALL_USERS_SUCCESS:
             state.users = action.users;
             return {
@@ -76,9 +77,6 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-
-
-
 
         default:
             return state;

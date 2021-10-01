@@ -4,7 +4,7 @@ const actionTypes = Object.freeze({
     SET_CONTENT_OF_CONFIRM_MODAL: 'SET_CONTENT_OF_CONFIRM_MODAL',
     CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
 
-    //user
+    //user login
     ADD_USER_SUCCESS: 'ADD_USER_SUCCESS',
     USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
     USER_LOGIN_FAIL: 'USER_LOGIN_FAIL',
@@ -32,6 +32,10 @@ const actionTypes = Object.freeze({
     //delete user
     DELETE_USER_SUCCESS: 'DELETE_USER_SUCCESS',
     DELETE_USER_FAILED: 'DELETE_USER_FAILED',
+
+    //edit user 
+    EDIT_USER_SUCCESS: 'EDIT_USER_SUCCESS',
+    EDIT_USER_FAILED: 'EDIT_USER_FAILED',
 })
 
 export default actionTypes;
