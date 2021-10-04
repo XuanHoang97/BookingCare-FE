@@ -13,14 +13,18 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 class Home extends Component {
+    // HandleAfterChange=(index, dontAnimate)=>{ 
+    //     console.log('hoang check: ', index);
+    // }
 
     render() {
         let settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,
+            // slickGoTo: this.HandleAfterChange
           };
 
         return (
