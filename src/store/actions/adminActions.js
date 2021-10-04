@@ -1,5 +1,6 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService } from "../../services/userService"
+import { getAllCodeService, createNewUserService, getAllUsers, deleteUserService,
+        editUserService, getTopDoctorHomeService } from "../../services/userService"
 import { toast } from "react-toastify"
 
 //fetch gender
@@ -87,7 +88,7 @@ export const createNewUser = (data) => {
     return async(dispatch, getState) => {
         try {
             let res = await createNewUserService(data);
-            console.log('check create user redux: ', res);
+            // console.log('check create user redux: ', res);
             if (res && res.data.errCode === 0) {
                 dispatch(saveUserSuccess());
                 dispatch(fetchAllUsersStart());
@@ -115,6 +116,7 @@ export const fetchAllUsersStart = () => {
     return async(dispatch, getState) => {
         try {
             let res = await getAllUsers('ALL');
+
             if (res && res.data.errCode === 0) {
                 dispatch(fetchAllUSersSuccess(res.data.users.reverse()))
             } else {
@@ -195,3 +197,27 @@ export const editUserSuccess = () => ({
 export const editUserFailed = () => ({
     type: actionTypes.EDIT_USER_FAILED
 })
+
+//get doctor
+export const fetchTopDoctor = () => {
+    return async(dispatch, getState) => {
+        try {
+            let res= await getTopDoctorHomeService('');
+            if(res && res.data.errCode ===0){
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
+                    dataDoctors: res.data.data
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTORS_FAILED
+                })
+            }
+        } catch (e) {
+            console.log('FETCH_TOP_DOCTORS_FAILED', e)
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTORS_FAILED
+            })
+        }
+    }
+}

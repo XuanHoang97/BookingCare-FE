@@ -17,6 +17,7 @@ class TableManageUser extends Component {
         this.props.fetchUserRedux()
     }
 
+    //compare state_old vs state_present
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.listUsers !== this.props.listUsers){
             this.setState({
@@ -28,7 +29,6 @@ class TableManageUser extends Component {
     //delete user 
     handleDeleteUser=(user)=>{
         this.props.deleteUserRedux(user.id);
-        console.log('check delete:', user )
     }
 
     //edit user
@@ -37,8 +37,8 @@ class TableManageUser extends Component {
     }
 
     render() {
-        console.log('check all users: ', this.props.listUsers)
-        console.log('check state: ', this.state.usersRedux)
+        // console.log('check all users: ', this.props.listUsers)
+        // console.log('check state: ', this.state.usersRedux)
         let arrUsers=this.state.usersRedux;
 
         return ( 
