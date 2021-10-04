@@ -37,12 +37,11 @@ class TableManageUser extends Component {
     }
 
     render() {
-        // console.log('check all users: ', this.props.listUsers)
-        // console.log('check state: ', this.state.usersRedux)
         let arrUsers=this.state.usersRedux;
 
         return ( 
-            <table id="TableManageUser">
+            <React.Fragment>
+                <table id="TableManageUser">
                 <thead>
                     <tr>
                         <th>Email</th>
@@ -84,7 +83,7 @@ class TableManageUser extends Component {
                     }
                 </tbody>
             </table>
-                
+            </React.Fragment>
         );
     }
 
