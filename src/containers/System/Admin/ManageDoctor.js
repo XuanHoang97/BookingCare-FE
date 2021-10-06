@@ -6,6 +6,7 @@ import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 import './ManageDoctor.scss';
+
 import Select from 'react-select';
 import {LANGUAGES, CRUD_ACTIONS} from "../../../utils"
 import {getDetailInforDoctor} from "../../../services/userService";
@@ -19,8 +20,8 @@ class ManageDoctor extends Component {
         this.state = {
             contentMarkdown: '',
             contentHTML: '',
-            selectedDoctor: '',
             description: '',
+            selectedDoctor: '',
             listDoctors: [],
             hasOldData: false,
         }
@@ -107,9 +108,7 @@ class ManageDoctor extends Component {
                 hasOldData: false
 
             })
-        }
-        
-        console.log(`Option selected:`, res.data);
+        }        
     };
 
     //onchange description doctor
@@ -177,7 +176,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAllDoctors: (id)=> dispatch(actions.fetchAllDoctors()),
+        fetchAllDoctors: ()=> dispatch(actions.fetchAllDoctors()),
         saveDetailDoctors: (data)=> dispatch(actions.saveDetailDr(data)),
 
     };
