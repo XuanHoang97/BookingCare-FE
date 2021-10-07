@@ -10,4 +10,10 @@
     .pick-hour-container {
         border: 1px solid rgb(177, 177, 177);
     }
+    .btn-schedule {
+        &.active {
+            background-color: orange !important;
+        }
+    }
+    .btn-save-schedule {}
 }
