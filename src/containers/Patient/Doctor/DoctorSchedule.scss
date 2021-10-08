@@ -12,6 +12,8 @@
         }
     }
     .all-avaiable-time {
+        min-height: 150px;
+        border-right: 1px solid lightgrey;
         .text-calendar {}
         .time-content {
             display: flex;
@@ -21,10 +23,18 @@
                 padding: 8px 10px;
                 min-width: 100px;
                 border: none;
+                font-weight: 600;
+                color: rgb(46, 46, 46);
                 &:hover {
                     background: rgb(61, 202, 202);
                     color: white;
                 }
+            }
+            .btn-vi {
+                width: 120px !important;
+            }
+            .btn-en {
+                width: 150px !important;
             }
         }
     }
