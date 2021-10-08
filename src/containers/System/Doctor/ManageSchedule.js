@@ -138,7 +138,9 @@ class ManageSchedule extends Component {
                     object.date =formatedDate;
                     object.timeType=schedule.keyMap;
                     result.push(object);
+                    
                 })
+                toast.success('Them thanh cong');
             }
             else{
                 toast.error('Invalid selected time');

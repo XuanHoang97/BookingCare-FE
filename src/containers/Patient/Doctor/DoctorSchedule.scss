@@ -1,0 +1,31 @@
+.doctor-schedule-container {
+    .all-schedule {
+        width: 28%;
+        .form-control {
+            cursor: pointer;
+            border-bottom: 1px solid rgb(0, 102, 255) !important;
+            border-radius: 0px;
+            border: none;
+            color: rgb(0, 102, 255);
+            font-weight: 600;
+            option {}
+        }
+    }
+    .all-avaiable-time {
+        .text-calendar {}
+        .time-content {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            button {
+                padding: 8px 10px;
+                min-width: 100px;
+                border: none;
+                &:hover {
+                    background: rgb(61, 202, 202);
+                    color: white;
+                }
+            }
+        }
+    }
+}

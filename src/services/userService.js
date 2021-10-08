@@ -1,22 +1,22 @@
 import axios from 'axios';
 //login
 const handleLoginApi = (userEmail, userPassword) => {
-    return axios.post('http://localhost:8080/api/login', { email: userEmail, password: userPassword });
+    return axios.post('http://localhost:8082/api/login', { email: userEmail, password: userPassword });
 }
 
 //display all users
 const getAllUsers = (inputId) => {
-    return axios.get(`http://localhost:8080/api/get-all-users?id=${inputId}`)
+    return axios.get(`http://localhost:8082/api/get-all-users?id=${inputId}`)
 }
 
 // create new user
 const createNewUserService = (data) => {
-    return axios.post(`http://localhost:8080/api/create-new-user`, data)
+    return axios.post(`http://localhost:8082/api/create-new-user`, data)
 }
 
 //delete user
 const deleteUserService = (userId) => {
-    return axios.delete(`http://localhost:8080/api/delete-user`, {
+    return axios.delete(`http://localhost:8082/api/delete-user`, {
         data: {
             id: userId
         }
@@ -25,42 +25,42 @@ const deleteUserService = (userId) => {
 
 //edit user
 const editUserService = (inputData) => {
-    return axios.put(`http://localhost:8080/api/edit-user`, inputData)
+    return axios.put(`http://localhost:8082/api/edit-user`, inputData)
 }
 
 //getAllCode
 const getAllCodeService = (inputType) => {
-    return axios.get(`http://localhost:8080/api/allcode?type=${inputType}`)
+    return axios.get(`http://localhost:8082/api/allcode?type=${inputType}`)
 }
 
 //get doctor
 const getTopDoctorHomeService = (limit) => {
-    return axios.get(`http://localhost:8080/api/top-doctor-home?limit=${limit}`)
+    return axios.get(`http://localhost:8082/api/top-doctor-home?limit=${limit}`)
 }
 
 //load doctor 
 const getAllDoctors = (limit) => {
-    return axios.get(`http://localhost:8080/api/get-all-doctors`)
+    return axios.get(`http://localhost:8082/api/get-all-doctors`)
 }
 
 //add description doctor
 const saveDetailDoctorService = (data) => {
-    return axios.post(`http://localhost:8080/api/save-infor-doctors`, data)
+    return axios.post(`http://localhost:8082/api/save-infor-doctors`, data)
 }
 
 //detail doctor
 const getDetailInforDoctor = (inputId) => {
-    return axios.get(`http://localhost:8080/api/get-detail-doctor-by-id?id=${inputId}`)
+    return axios.get(`http://localhost:8082/api/get-detail-doctor-by-id?id=${inputId}`)
 }
 
 //create schedule time doctor
 const saveBulkScheduleDoctor = (data) => {
-    return axios.post(`http://localhost:8080/api/bulk-create-schedule`, data)
+    return axios.post(`http://localhost:8082/api/bulk-create-schedule`, data)
 }
 
 //load Schedule doctor by date
 const getScheduleDoctorByDate = (doctorId, date) => {
-    return axios.get(`http://localhost:8080/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`)
+    return axios.get(`http://localhost:8082/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`)
 }
 
 
