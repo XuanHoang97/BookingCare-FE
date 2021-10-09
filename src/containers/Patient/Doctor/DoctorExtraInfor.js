@@ -3,14 +3,16 @@ import { connect } from "react-redux";
 import './DoctorExtraInfor.scss';
 
 import {LANGUAGES} from '../../../utils';
-import {getScheduleDoctorByDate} from "../../../services/userService"
+import {getExtraInforDoctorById} from "../../../services/userService"
 import {FormattedMessage} from 'react-intl';
+import NumberFormat from 'react-number-format';
 
 class DoctorExtraInfor extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isShowDetailInfor: false,
+            extraInfor: {}
         }
     }
 
@@ -25,6 +27,15 @@ class DoctorExtraInfor extends Component {
        
         }
 
+        if(this.props.doctorIdFromParent !== prevProps.doctorIdFromParent){
+            let res = await getExtraInforDoctorById(this.props.doctorIdFromParent);
+            if(res && res.data.errCode === 0){
+                this.setState({
+                    extraInfor: res.data.data
+                })
+            }
+        }
+
     }
 
     //show-hide detail infor
@@ -35,19 +46,44 @@ class DoctorExtraInfor extends Component {
     }
 
     render() {
-        let {isShowDetailInfor}=this.state;
+        let {isShowDetailInfor, extraInfor}=this.state;
+        let {language}= this.props;
 
+        console.log('check state: ', this.state)
         return (
             <div className="doctor-extra-infor-container pl-3">
                 <div className="content-up">
                     <div className="text-address">ĐỊA CHỈ KHÁM</div>
-                    <div className="name-clinic">Phòng khám chuyên khoa da liễu</div>
-                    <div className="detail-address">207 Phố Huế - Hai Bà Trưng - Hà Nội</div>
+                    <div className="name-clinic">
+                        {extraInfor && extraInfor.nameClinic ? extraInfor.nameClinic : ''}
+                    </div>
+                    <div className="detail-address">{extraInfor && extraInfor.addressClinic ? extraInfor.addressClinic : ''}</div>
                 </div>
 
                 <div className="content-down">
                     {isShowDetailInfor===false ?
-                    <div className="price">GIÁ KHÁM: 250.000đ. 
+
+                    <div className="price">GIÁ KHÁM: 
+                        {extraInfor && extraInfor.priceTypeData && language===LANGUAGES.VI &&
+                            <NumberFormat
+                            value={extraInfor.priceTypeData.valueVi}
+                            displayType={'text'}
+                            thousandSeparator={true}
+                            suffix={'VND'}
+                            className="mx-2 text-primary"
+                            />
+                        }
+
+                        {extraInfor && extraInfor.priceTypeData && language===LANGUAGES.EN &&
+                            <NumberFormat
+                            value={extraInfor.priceTypeData.valueEn}
+                            displayType={'text'}
+                            thousandSeparator={true}
+                            suffix={'$'}
+                            className="mx-2 text-primary"
+                            />
+                        }
+
                         <span onClick={()=>this.showHideDetailInfor(true)} className="text-info ml-3">Xem chi tiết </span> 
                     </div>
                     :
@@ -56,20 +92,44 @@ class DoctorExtraInfor extends Component {
 
                         <div class="card">
                             <div class="card-header">
-                                <div className="price-infor d-flex justify-content-beetween">
+                                <div className="price-infor d-flex justify-content-between">
                                     <div className="price-title">Giá khám</div>
-                                    <div className="price text-danger">250.000đ</div>
+                                    <div className="price text-danger">
+                                    {extraInfor && extraInfor.priceTypeData && language===LANGUAGES.VI &&
+                                        <NumberFormat
+                                        value={extraInfor.priceTypeData.valueVi}
+                                        displayType={'text'}
+                                        thousandSeparator={true}
+                                        suffix={'VND'}
+                                        className="mx-2 text-primary"
+                                        />
+                                    }
+
+                                    {extraInfor && extraInfor.priceTypeData && language===LANGUAGES.EN &&
+                                        <NumberFormat
+                                        value={extraInfor.priceTypeData.valueEn}
+                                        displayType={'text'}
+                                        thousandSeparator={true}
+                                        suffix={'$'}
+                                        className="mx-2 text-primary"
+                                        />
+                                    }
+                                    </div>
                                 </div>
 
-                                <div>
-                                    Được ưu tiên khám trước khi đật khám qua BookingCare. Giá khám cho người nước ngoài là 30 USD
+                                <div className="note">
+                                    {extraInfor && extraInfor.notes ? extraInfor.notes : ''}  
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div>Người bệnh có thể thanh toán chi phí bằng hình thức tiền mặt và quẹt thẻ</div>
+                                <div>Người bệnh có thể thanh toán chi phí bằng hình thức:
+                                    {extraInfor && extraInfor.paymentTypeData ? extraInfor.paymentTypeData.valueVi : ''}  
+                                </div>
                             </div>
                         </div>
-                        <div onClick={()=>this.showHideDetailInfor(false)} className="text-info mt-2">Ẩn bảng giá</div>
+                        <div onClick={()=>this.showHideDetailInfor(false)} className="text-info mt-2" style={{cursor: 'pointer'}}>
+                            Ẩn bảng giá
+                        </div>
                     </>
                     }
                 </div>

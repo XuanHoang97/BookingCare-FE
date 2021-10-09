@@ -168,14 +168,14 @@ class ManageDoctor extends Component {
             let {listPayment, listPrice, listProvince}=this.state;
 
             //infor clinic
-            let addressClinic= '', nameClinic='', note='', 
+            let addressClinic= '', nameClinic='', notes='', 
             paymentId= '', priceId ='', provinceId= '', selectedPayment='',
             selectedPrice='', selectedProvince='' ;
 
             if(res.data.data.Doctor_Infor){
                 addressClinic=res.data.data.Doctor_Infor.addressClinic;
                 nameClinic=res.data.data.Doctor_Infor.nameClinic;
-                note=res.data.data.Doctor_Infor.note;
+                notes=res.data.data.Doctor_Infor.notes;
 
                 paymentId=res.data.data.Doctor_Infor.paymentId;
                 priceId=res.data.data.Doctor_Infor.priceId;
@@ -202,7 +202,7 @@ class ManageDoctor extends Component {
                 hasOldData: true,
                 addressClinic: addressClinic,
                 nameClinic: nameClinic,
-                note: note,
+                note: notes,
                 selectedPayment: selectedPayment,
                 selectedPrice: selectedPrice,
                 selectedProvince: selectedProvince,

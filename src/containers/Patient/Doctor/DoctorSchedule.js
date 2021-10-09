@@ -103,7 +103,6 @@ class DoctorSchedule extends Component {
         let {allDays, allAvailableTime}=this.state;
         let {language}=this.props;
 
-        console.log('check time available: ', allAvailableTime)
 
         return (
             <div className="doctor-schedule-container">

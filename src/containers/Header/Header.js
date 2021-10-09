@@ -40,7 +40,6 @@ class Header extends Component {
             menuApp: menu,
         })
 
-        console.log('check role: ', this.props.userInfo)
 
     }
 
