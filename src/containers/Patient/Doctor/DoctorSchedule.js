@@ -125,7 +125,7 @@ class DoctorSchedule extends Component {
             <>
                 <div className="doctor-schedule-container">
                 <div className="all-schedule">
-                     <select class="form-control" onChange={(e) => this.handleChangeSelect(e)}>
+                     <select className="form-control" onChange={(e) => this.handleChangeSelect(e)}>
                          {allDays && allDays.length > 0 &&
                             allDays.map((item,index)=>{
                                 return (

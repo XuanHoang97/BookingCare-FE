@@ -90,8 +90,8 @@ class DoctorExtraInfor extends Component {
                     <>
                         <div>GIÁ KHÁM: .</div>
 
-                        <div class="card">
-                            <div class="card-header">
+                        <div className="card">
+                            <div className="card-header">
                                 <div className="price-infor d-flex justify-content-between">
                                     <div className="price-title">Giá khám</div>
                                     <div className="price text-danger">
@@ -121,7 +121,7 @@ class DoctorExtraInfor extends Component {
                                     {extraInfor && extraInfor.notes ? extraInfor.notes : ''}  
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <div>Người bệnh có thể thanh toán chi phí bằng hình thức:
                                     {extraInfor && extraInfor.paymentTypeData ? extraInfor.paymentTypeData.valueVi : ''}  
                                 </div>

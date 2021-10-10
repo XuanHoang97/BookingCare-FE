@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import './BookingModal.scss';
 import {FormattedMessage} from 'react-intl';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import ProfileDoctor from '../ProfileDoctor';
+import _ from 'lodash';
 class BookingModal extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +30,14 @@ class BookingModal extends Component {
     render() {
         let {isOpenModal, isCloseModal, dataTime}=this.props;
 
+        // let doctorId = '';
+        // if(dataTime && !_.isEmpty(dataTime)){
+        //     doctorId=dataTime.doctorId;
+        // }
+
+        let doctorId=dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : '';
+
+        console.log('data props from modal: ', this.props)
         return (
             <div>
                 <Modal 
@@ -37,16 +46,17 @@ class BookingModal extends Component {
                     size="lg"
                     centered
                 >
-                    <div className="header d-flex justify-content-between p-3" style={{borderBottom: '1px solid lightgrey'}}>
+                    <div className="header d-flex justify-content-between py-2 px-3" style={{borderBottom: '1px solid lightgrey'}}>
                         <h5>Thông tin đặt lịch khám bệnh</h5> 
                         <span onClick={isCloseModal} style={{cursor: 'pointer'}}><i className="fas fa-times"></i></span> 
                     </div>
                     <ModalBody>
                         {/* {JSON.stringify(dataTime)} */}
                         
-                        <div className="price">
-                            Giá khám: 
-                            <span className="ml-2">500.000VND</span> 
+                        <div className="doctor-infor">
+                            <ProfileDoctor 
+                                doctorId = {doctorId}
+                            />
                         </div>
 
                         <form>
