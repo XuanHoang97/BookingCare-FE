@@ -11,11 +11,12 @@ import {LANGUAGES} from "../../../../utils";
 import Select from 'react-select';
 import {postPatientBookAppointment} from "../../../../services/userService";
 import {toast} from 'react-toastify';
+import moment from 'moment';
 class BookingModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           fullname: '',
+           fullName: '',
            phoneNumber: '',
            email: '',
            address: '',
@@ -94,11 +95,46 @@ class BookingModal extends Component {
         })
     }
 
+    //sendMail
+    buildTimeBooking=(dataTime)=>{
+        let {language}= this.props;
+
+        if(dataTime && !_.isEmpty(dataTime)){
+            //convert string to obj js
+            let time=language ===LANGUAGES.VI ? dataTime.timeTypeData.valueVi: dataTime.timeTypeData.valueEn;
+
+            let date=language===LANGUAGES.VI ?
+                moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY')
+                :
+                moment.unix(+dataTime.date / 1000).locale('en').format('dddd - MM/DD/YYYY')
+
+            return `${time} - ${date}`
+        }
+        return ''
+    }
+
+    buildDoctorName = (dataTime)=>{
+        let {language} = this.props;
+        if(dataTime && !_.isEmpty(dataTime)){
+            let name = language === LANGUAGES.VI ?
+            `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName} `
+            :
+            `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`
+
+            return name;
+        }
+        return ''
+    }
+
+
+
     //Appointment
     handleConfirmBooking=async() => {
         //validate
 
         let date = new Date(this.state.birthday).getTime();
+        let timeString = this.buildTimeBooking(this.props.dataTime)
+        let doctorName = this.buildDoctorName(this.props.dataTime)
 
         let res = await postPatientBookAppointment({
             fullName: this.state.fullName,
@@ -109,7 +145,10 @@ class BookingModal extends Component {
             date: date,
             selectedGender: this.state.selectedGender.value,
             doctorId: this.state.doctorId,
-            timeType: this.state.timeType
+            timeType: this.state.timeType,
+            language: this.props.language,
+            timeString: timeString,
+            doctorName: doctorName
         })
 
         console.log('check res: ', res.data)
@@ -158,8 +197,8 @@ class BookingModal extends Component {
                                 <div className="form-group col-md-3">
                                     <label>Họ tên</label>
                                     <input type="text" className="form-control" 
-                                        value={this.state.fullname}
-                                        onChange={(e)=> this.handleOnchangeInput(e, 'fullname')}
+                                        value={this.state.fullName}
+                                        onChange={(e)=> this.handleOnchangeInput(e, 'fullName')}
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
