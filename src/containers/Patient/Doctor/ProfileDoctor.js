@@ -80,7 +80,7 @@ class ProfileDoctor extends Component {
         console.log('check state: ', this.state)
         return (
             <div>
-                <div className="intro-doctor" style= {{display: 'grid', gridTemplateColumns: '12% 88%'}}>
+                <div className="intro-doctor" style= {{display: 'grid', gridTemplateColumns: '18% 82%'}}>
                     <div className="content-left"
                         style={{backgroundImage: `url(${dataProfile && dataProfile.image ? dataProfile.image : ''})`, 
                         height:'80px', width: '80px',borderRadius: '50%', backgroundRepeat:'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}

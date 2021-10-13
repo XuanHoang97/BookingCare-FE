@@ -93,6 +93,11 @@ const getAllSpecialty = () => {
     return axios.get(`http://localhost:8082/api/get-specialty`)
 }
 
+//detail specialty
+const getAllDetailSpecialty = (data) => {
+    return axios.get(`http://localhost:8082/api/get-detail-specialty-by-id?id=${data.id}&location=${data.location}`)
+}
+
 
 
 export {
@@ -113,5 +118,6 @@ export {
     postPatientBookAppointment,
     postVerifyBookAppointment,
     createNewSpecialty,
-    getAllSpecialty
+    getAllSpecialty,
+    getAllDetailSpecialty
 };
