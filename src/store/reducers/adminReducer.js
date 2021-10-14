@@ -123,7 +123,7 @@ const adminReducer = (state = initialState, action) => {
                 ...state,
             }
 
-        //fetch doctor infor(price, payment, province)
+            //fetch doctor infor(price, payment, province, specialty, clinic)
         case actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_SUCCESS:
             state.allRequiredDoctorInfor = action.data;
             return {

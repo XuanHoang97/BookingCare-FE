@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Specialty.scss';
-import {FormattedMessage} from 'react-intl';
 import {getAllSpecialty} from '../../../services/userService';
 import {withRouter} from 'react-router';
 
@@ -17,9 +16,6 @@ class Specialty extends Component {
 
     async componentDidMount() {
         let res = await getAllSpecialty();
-
-        console.log('state: ', res.data)
-
         if(res && res.data.errCode === 0){
             this.setState({dataSpecialty: res.data.data ? res.data.data : []});
         }
@@ -29,6 +25,7 @@ class Specialty extends Component {
 
     }
 
+    //view detail dpecialty
     handleViewDetailSpecialty = (item) =>{
         if(this.props.history){
             this.props.history.push(`/detail-specialty/${item.id}`);
