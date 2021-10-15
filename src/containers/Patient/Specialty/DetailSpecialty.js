@@ -124,7 +124,7 @@ class DetailSpecialty extends Component {
                     </div>
 
                     <div className="search-sp-doctor col-2 p-0">
-                        <select class="form-control font-weight-bold" onChange={(e) => this.handleOnchangeSelect(e)}>
+                        <select className="form-control font-weight-bold" onChange={(e) => this.handleOnchangeSelect(e)}>
                             {
                                 listProvince && listProvince.length >0 &&
                                 listProvince.map((item,index)=>{

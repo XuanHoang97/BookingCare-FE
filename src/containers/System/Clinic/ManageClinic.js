@@ -126,7 +126,7 @@ class ManageClinic extends Component {
                     </div>
 
                     <div className="col-12 mt-3">
-                        <button type="button" class="btn btn-primary"
+                        <button type="button" className="btn btn-primary"
                             onClick={() =>this.handleSaveNewClinic()}
                         >
                             Save
