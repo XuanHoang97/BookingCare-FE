@@ -58,8 +58,8 @@ class Comment extends Component {
         return (
             
             <div className="fb-comments" 
-                // data-href="https://developers.facebook.com/docs/plugins/" 
-                data-href={dataHref}
+                data-href="https://developers.facebook.com/docs/plugins/" 
+                // data-href={dataHref}
                 data-width={width ? width : ""}
                 data-numposts ={numPost ? numPost :5}
             >
