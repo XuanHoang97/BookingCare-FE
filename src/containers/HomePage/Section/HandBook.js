@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import './HandBook.scss';
-import {FormattedMessage} from 'react-intl';
 
 import Slider from 'react-slick';
 
@@ -20,27 +19,27 @@ class HandBook extends Component {
                         <Slider {...this.props.settings}>
                             <div className="section-customize">
                                 <div className="bg-image section-handbook" />
-                                <div>Cơ xương khớp 1</div>
+                                <div>cẩm nang 1</div>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-image section-handbook" />
-                                <div>Cơ xương khớp 2</div>
+                                <div>cẩm nang 2</div>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-image section-handbook" />
-                                <div>Cơ xương khớp 3</div>
+                                <div>cẩm nang 3</div>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-image section-handbook" />
-                                <div>Cơ xương khớp 4</div>
+                                <div>cẩm nang 4</div>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-image section-handbook" />
-                                <div>Cơ xương khớp 5</div>
+                                <div>cẩm nang 5</div>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-image section-handbook" />
-                                <div>Cơ xương khớp 6</div>
+                                <div>cẩm nang 6</div>
                             </div>
                         </Slider>
                     </div>

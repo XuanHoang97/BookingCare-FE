@@ -4,7 +4,9 @@
         display: flex;
         margin: 0 90px;
         .content-left {
-            background: center center no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -21,6 +23,9 @@
             .down {
                 font: size 12px;
                 color: grey;
+                .like-share-plugin {
+                    margin: 10px 0 20px 0;
+                }
             }
         }
     }
@@ -40,6 +45,8 @@
         padding: 10px 100px;
         margin: 15px 0;
         background: rgb(240, 240, 240);
+        h1,
+        h2,
         h5 {
             font-size: 17px;
         }
